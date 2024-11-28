@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objectif Movember</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        .progress-container {
+            margin: 20px auto;
+            width: 80%;
+            background: #ddd;
+            border-radius: 25px;
+            overflow: hidden;
+            height: 30px;
+        }
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: #009688;
+            text-align: center;
+            color: white;
+            line-height: 30px;
+            transition: width 0.5s;
+        }
+        .content {
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            gap: 20px; /* Espacement horizontal */
+            margin-top: 30px;
+        }
+        .team-photo {
+            height: 500px; /* Hauteur fixe pour alignement */
+            width: auto; /* Conserver les proportions */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .qr-logo-container {
+            display: flex;
+            flex-direction: column; /* Organiser verticalement QR + logo */
+            align-items: center;
+            justify-content: space-between; /* Espacement entre QR et logo */
+            height: 600px; /* Même hauteur que la photo */
+        }
+        .qr-code {
+            max-height: 60%; /* Occuper 60% de la hauteur */
+            width: 400px; /* Conserver les proportions */
+        }
+        .movember-logo {
+            max-height: 40%; /* Occuper 30% de la hauteur */
+            width: 400px; /* Conserver les proportions */
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Notre Objectif Movember : 800$</h1>
+    
+    <!-- Barre de progression -->
+    <div class="progress-container">
+        <div id="progress-bar" class="progress-bar">0%</div>
+    </div>
+    <p id="amount-raised">Montant collecté : 0$</p>
+    
+    <!-- Conteneur pour la photo d'équipe, QR code et logo -->
+    <div class="content">
+        <!-- Photo d'équipe -->
+        <div>
+            <img class="team-photo" src="Média.jpg" alt="Photo d'équipe Movember">
+        </div>
+        <!-- QR Code + Logo -->
+        <div class="qr-logo-container">
+            <img class="qr-code" src="Movember-QR-Code.png" alt="QR Code pour les dons">
+            <img class="movember-logo" src="MOVEMBER.png" alt="Logo Movember">
+        </div>
+    </div>
+
+    <script>
+        // Objectif total
+        const objectif = 800;
+        
+        // Exemple : Vous pouvez remplacer cette valeur par une API ou une entrée dynamique
+        let montantCollecte = 450; // Valeur initiale, remplacez par la valeur réelle
+
+        // Mettre à jour la barre de progression
+        function updateProgressBar() {
+            const progressBar = document.getElementById('progress-bar');
+            const montantElement = document.getElementById('amount-raised');
+
+            // Calculer le pourcentage
+            const pourcentage = Math.min((montantCollecte / objectif) * 100, 100);
+            progressBar.style.width = pourcentage + '%';
+            progressBar.textContent = Math.round(pourcentage) + '%';
+            montantElement.textContent = `Montant collecté : ${montantCollecte}$`;
+        }
+
+        // Initialiser la page
+        updateProgressBar();
+    </script>
+
+</body>
+</html>
+
